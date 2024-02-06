@@ -22,4 +22,4 @@ jobs:
           EXTERN_LATEST=$(curl --header "X-GitHub-Api-Version:2022-11-28"  https://api.github.com/repos/playwright-community/playwright-go/releases | jq '.[1].tag_name')
           LOCAL_LATEST=$(curl --header "X-GitHub-Api-Version:2022-11-28"  https://api.github.com/repos/manfromth3m0oN/playwright-go/releases | jq '.[1].tag_name')
           LATEST=$(echo "$EXTERN_LATEST\n$LOCAL_LATEST" | sort -V | tail -n 1)
-          sed -r 's/playwright@(v[0-9]+.[0-9]+.[0-9])/playwright@'$LATEST'/g' Dockerfile 
+          sed -r $(printf 's/playwright@(v[0-9]+.[0-9]+.[0-9])/playwright@%s/g'  $LATEST) Dockerfile 
