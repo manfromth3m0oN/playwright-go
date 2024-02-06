@@ -25,6 +25,10 @@ jobs:
           LOCAL_LATEST=$(curl --header "X-GitHub-Api-Version:2022-11-28"  https://api.github.com/repos/manfromth3m0oN/playwright-go/releases | jq '.[1].tag_name')
           LATEST=$(echo "$EXTERN_LATEST\n$LOCAL_LATEST" | sort -V | tail -n 1 | tr -d '"nul\\')
           echo $LATEST
+          if [ $LATEST = $(git describe --tags --abbrev=0) ]; do
+            echo "Already at latest"
+            exit 0
+          done
           sed -i -r $(printf 's/playwright@(v[0-9]+.[0-9]+.[0-9])/playwright@%s/g'  $LATEST) Dockerfile
           git remote set-url --push origin https://manfromth3m0oN:${{ secrets.GH_TOKEN }}@github.com/manfromth3m0oN/playwright-go
           git config --global user.name 'Max S-T'
