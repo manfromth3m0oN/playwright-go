@@ -36,3 +36,5 @@ jobs:
           git config --global user.email 'manfromth3m0oN@users.noreply.github.com'
           git commit -am "Automated update to $LATEST"
           git push
+          git tag "$LATEST"
+          git push origin "$LATEST"
