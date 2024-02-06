@@ -24,7 +24,7 @@ jobs:
           LATEST=$(echo "$EXTERN_LATEST\n$LOCAL_LATEST" | sort -V | tail -n 1 | tr -d '"nul\\')
           echo $LATEST
           sed -i -r $(printf 's/playwright@(v[0-9]+.[0-9]+.[0-9])/playwright@%s/g'  $LATEST) Dockerfile
-          git remote set-url --push origin https://manfromth3m0oN:$GITHUB_TOKEN@github.com/manfromth3m0oN/playwright-go
+          git remote set-url --push origin https://manfromth3m0oN:$GH_TOKEN@github.com/manfromth3m0oN/playwright-go
           git config --global user.name 'Max S-T'
           git config --global user.email 'manfromth3m0oN@users.noreply.github.com'
           git commit -am "Automated update to $LATEST"
