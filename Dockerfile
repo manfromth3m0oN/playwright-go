@@ -1,4 +1,4 @@
-FROM debian:bookworm-backports
+FROM debian:trixie
 
 RUN apt-get update -y
 RUN apt-get upgrade -y
