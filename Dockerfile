@@ -1,4 +1,4 @@
-FROM debian:trixie
+FROM golang:1.23-bookworm
 
 RUN apt-get update -y
 RUN apt-get upgrade -y
