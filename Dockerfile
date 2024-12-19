@@ -1,4 +1,4 @@
-FROM debian:sid
+FROM debian:bookworm-backports
 
 RUN apt-get update -y
 RUN apt-get upgrade -y
